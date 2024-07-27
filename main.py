@@ -1,21 +1,32 @@
-from random import shuffle, randrange
+import os
+from random import randrange, shuffle
 
 
 def main():
+    print("\n=====================================")
     print("# Listing out today's 4 problems!")
     print(">>> Time limit: 120 minutes")
+    print("=====================================\n")
 
     # reading the problems txt files
     easy_problems = []
     medium_problems = []
     hard_problems = []
-    with open("problems/easy.txt", "r") as file:
+
+    # getting the paths of each problems file
+    script_path = os.path.dirname(os.path.abspath(__file__))
+    problems_dir = os.path.join(script_path, "problems")
+    easy_problems_file = os.path.join(problems_dir, "easy.txt")
+    medium_problems_file = os.path.join(problems_dir, "medium.txt")
+    hard_problems_file = os.path.join(problems_dir, "hard.txt")
+
+    with open(easy_problems_file, "r") as file:
         easy_problems = file.read().splitlines()
         shuffle(easy_problems)
-    with open("problems/medium.txt", "r") as file:
+    with open(medium_problems_file, "r") as file:
         medium_problems = file.read().splitlines()
         shuffle(medium_problems)
-    with open("problems/hard.txt", "r") as file:
+    with open(hard_problems_file, "r") as file:
         hard_problems = file.read().splitlines()
         shuffle(hard_problems)
 

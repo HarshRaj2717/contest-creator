@@ -58,7 +58,7 @@ def main():
     shuffle(final_problems)
     for i, problem in enumerate(final_problems):
         print(f"Problem {i + 1}: {problem}")
-
+    print()
 
 if __name__ == "__main__":
     main()

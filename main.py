@@ -37,13 +37,8 @@ def main():
     final_problems.append(hard_problems[randrange(len(hard_problems))])
 
     # adding one extra problem from a random category
-    random_category = randrange(3)
+    random_category = randrange(2)
     if random_category == 0:
-        picked_problem = easy_problems[randrange(len(easy_problems))]
-        while picked_problem in final_problems:
-            picked_problem = easy_problems[randrange(len(easy_problems))]
-        final_problems.append(picked_problem)
-    elif random_category == 1:
         picked_problem = medium_problems[randrange(len(medium_problems))]
         while picked_problem in final_problems:
             picked_problem = medium_problems[randrange(len(medium_problems))]

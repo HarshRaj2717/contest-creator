@@ -1,8 +1,9 @@
 import os
+import sys
 from random import randrange, shuffle
 
 
-def main():
+def main(from_codeforces: bool = False):
     print("\n=====================================")
     print("# Listing out today's 4 problems!")
     print(">>> Time limit: 120 minutes")
@@ -16,9 +17,17 @@ def main():
     # getting the paths of each problems file
     script_path = os.path.dirname(os.path.abspath(__file__))
     problems_dir = os.path.join(script_path, "problems")
-    easy_problems_file = os.path.join(problems_dir, "easy.txt")
-    medium_problems_file = os.path.join(problems_dir, "medium.txt")
-    hard_problems_file = os.path.join(problems_dir, "hard.txt")
+
+    if from_codeforces:
+        problems_dir = os.path.join(problems_dir, "codeforces")
+        easy_problems_file = os.path.join(problems_dir, "1100.txt")
+        medium_problems_file = os.path.join(problems_dir, "1200.txt")
+        hard_problems_file = os.path.join(problems_dir, "1300.txt")
+    else:
+        problems_dir = os.path.join(problems_dir, "leetcode")
+        easy_problems_file = os.path.join(problems_dir, "easy.txt")
+        medium_problems_file = os.path.join(problems_dir, "medium.txt")
+        hard_problems_file = os.path.join(problems_dir, "hard.txt")
 
     with open(easy_problems_file, "r") as file:
         easy_problems = file.read().splitlines()
@@ -55,5 +64,8 @@ def main():
         print(f"Problem {i + 1}: {problem}")
     print()
 
+
 if __name__ == "__main__":
-    main()
+    args = sys.argv
+    from_codeforces = True if "-cf" in args or "cf" in args else False
+    main(from_codeforces)

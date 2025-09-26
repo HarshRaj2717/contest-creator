@@ -67,5 +67,5 @@ def main(from_codeforces: bool = False):
 
 if __name__ == "__main__":
     args = sys.argv
-    from_codeforces = True if "-cf" in args or "cf" in args else False
+    from_codeforces = True if "-cf" in args else False
     main(from_codeforces)
